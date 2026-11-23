@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useId, useRef, useState } from 'react'
+import { useIsClient } from '../../hooks/useIsClient'
 import { useLocation } from 'react-router-dom'
 import { AlertCircle, Check, CircleCheck, Loader2, Phone, Send } from 'lucide-react'
 import { topics, type TopicId } from '../../data/services'
@@ -64,14 +65,17 @@ export function RequestForm() {
   const formRef = useRef<HTMLFormElement>(null)
   const resultRef = useRef<HTMLDivElement>(null)
 
-  // Service preselection from ?aihe=… (links on service pages). Read after mount so the
-  // prerendered markup and the first client render stay identical.
-  useEffect(() => {
+  // Service preselection from ?aihe=… (links on service pages). Applied only after
+  // hydration so the prerendered markup and the first client render stay identical.
+  const isClient = useIsClient()
+  const [appliedSearch, setAppliedSearch] = useState<string | null>(null)
+  if (isClient && appliedSearch !== location.search) {
+    setAppliedSearch(location.search)
     const aihe = new URLSearchParams(location.search).get('aihe') as TopicId | null
-    if (aihe && topics.some((t) => t.id === aihe)) {
-      setData((d) => (d.topics.includes(aihe) ? d : { ...d, topics: [...d.topics, aihe] }))
+    if (aihe && topics.some((t) => t.id === aihe) && !data.topics.includes(aihe)) {
+      setData({ ...data, topics: [...data.topics, aihe] })
     }
-  }, [location.search])
+  }
 
   const set = <K extends keyof ServiceRequest>(key: K, value: ServiceRequest[K]) => {
     if (!started.current) {
@@ -236,7 +240,7 @@ export function RequestForm() {
         <legend className="label flex items-center gap-2 text-ink">
           <span className="grid size-6 place-items-center bg-red text-white">2</span> Ajoneuvo
         </legend>
-        <div className="mt-5 grid gap-6 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+        <div className="mt-5 grid gap-6 sm:grid-cols-2">
           <Field id={fid('plate')} label="Rekisterinumero" optional error={errors.plate}>
             <input
               id={fid('plate')}

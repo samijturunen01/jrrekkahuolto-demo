@@ -30,7 +30,7 @@ export function NotFound() {
           <ul>
             {services.map((s) => (
               <li key={s.id} className="border-b border-white/10">
-                <Link to={s.path} className="group flex min-h-14 items-center justify-between gap-4 py-3 text-lg font-semibold hover:text-red-hot">
+                <Link to={s.path} className="group flex min-h-14 items-center justify-between gap-4 py-3 text-lg font-semibold hover:text-red-soft">
                   {s.label}
                   <ArrowRight className="size-5 flex-none transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </Link>

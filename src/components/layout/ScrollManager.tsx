@@ -4,13 +4,17 @@ import { endIntro, prefersReducedMotion } from '../../lib/intro'
 
 const positions = new Map<string, number>()
 const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
+const norm = (p: string) => p.replace(/\/+$/, '') || '/'
 
 /**
- * Main-navigation links call this. Every non-POP navigation already opens the destination
- * at the top; this also covers clicking the link of the page you're already on.
+ * Main-navigation links call this. Navigating to another page already opens it at the top
+ * (see ScrollManager); this covers clicking the link of the page you are already on.
+ * It never scrolls before a real navigation, so the page you leave keeps its saved position.
  */
-export function navScroll() {
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+export function navScroll(e: React.MouseEvent<HTMLAnchorElement>) {
+  if (norm(new URL(e.currentTarget.href).pathname) === norm(window.location.pathname)) {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }
 }
 
 /**
@@ -25,23 +29,21 @@ export function ScrollManager() {
   const navType = useNavigationType()
   const first = useRef(true)
   const prevPath = useRef(location.pathname)
+  const keyRef = useRef(location.key)
 
+  // One listener for the whole session; positions are filed under the entry that is
+  // current at the moment of scrolling (keyRef switches synchronously on navigation).
   useEffect(() => {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
-  }, [])
-
-  // Remember the scroll position of each history entry
-  useEffect(() => {
-    const key = location.key
-    const save = () => positions.set(key, window.scrollY)
-    // (Not saved again on cleanup: by then the next page has already reset the scroll.)
+    const save = () => positions.set(keyRef.current, window.scrollY)
     window.addEventListener('scroll', save, { passive: true })
     return () => window.removeEventListener('scroll', save)
-  }, [location.key])
+  }, [])
 
   useIsoLayoutEffect(() => {
     const samePage = prevPath.current === location.pathname
     prevPath.current = location.pathname
+    keyRef.current = location.key
     if (first.current) {
       // Initial document load: the browser has already handled any #hash.
       first.current = false

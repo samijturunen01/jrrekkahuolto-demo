@@ -31,13 +31,13 @@ export function CtaBand({
           <h2 id={`cta-${location}`} className="display-lg">
             {title}
           </h2>
-          <p className="lead mt-5 max-w-2xl text-white/90">{text}</p>
+          <p className="lead mt-5 max-w-2xl text-white">{text}</p>
         </div>
         <div className="flex flex-col gap-3">
           <RequestCta topic={topic} variant="white" location={location} className="w-full" />
           <CallCta variant="ghost-light" location={location} className="w-full" />
-          <OpenNow dark className="mt-1 text-white/90" />
-          <p className="text-sm text-white/80">
+          <OpenNow dark className="mt-1 text-white" />
+          <p className="text-sm text-white">
             {company.hours.weekdays.label} {company.hours.weekdays.short} · {company.hours.saturday.label} {company.hours.saturday.short} ·{' '}
             {company.hours.other.toLowerCase()}
           </p>

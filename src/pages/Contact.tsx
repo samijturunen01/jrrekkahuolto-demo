@@ -25,7 +25,7 @@ export function Contact() {
         lead="Soita korjaamolle, lähetä sähköpostia tai jätä huoltopyyntö. Kerro ajoneuvo ja mitä sille pitäisi tehdä – sovitaan aika, joka sopii ajoihisi."
         aside={
           <div className="bg-red p-7 text-white sm:p-9">
-            <p className="label text-white/80">Korjaamo</p>
+            <p className="label text-white">Korjaamo</p>
             <a
               href={`tel:${company.phone.e164}`}
               className="mt-3 flex min-h-12 items-center gap-3 font-[family-name:var(--font-display)] text-[clamp(2.4rem,5vw,3.5rem)] font-extrabold leading-none tabular-nums hover:underline"
@@ -55,13 +55,13 @@ export function Contact() {
                   {company.hours.saturday.open}–{company.hours.saturday.close}
                 </dd>
               </div>
-              <div className="flex justify-between gap-4 text-white/85">
+              <div className="flex justify-between gap-4 text-white">
                 <dt>Muina aikoina</dt>
                 <dd>sopimuksen mukaan</dd>
               </div>
             </dl>
             <OpenNow dark className="mt-5 text-white" />
-            <p className="mt-1 text-sm text-white/80">Pyhäpäivien aukiolo kannattaa varmistaa puhelimitse.</p>
+            <p className="mt-1 text-sm text-white">Pyhäpäivien aukiolo kannattaa varmistaa puhelimitse.</p>
           </div>
         }
       />
@@ -73,9 +73,7 @@ export function Contact() {
           </div>
           <div className="grid content-start gap-10">
             <div>
-              <LaneTag no="A" className="text-steel">
-                Suorat numerot
-              </LaneTag>
+              <p className="label text-steel">Suorat numerot työnjohtajille</p>
               <div className="mt-5 grid gap-4">
                 {company.people.map((p) => (
                   <div key={p.id} className="border-2 border-ink">

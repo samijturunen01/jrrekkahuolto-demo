@@ -79,7 +79,7 @@ export function ServicePage({ id }: { id: ServiceId }) {
               </div>
             )}
           </div>
-          <div className="bg-ink p-7 text-white sm:p-9" data-reveal style={{ '--d': '0.1s' } as React.CSSProperties}>
+          <div className="self-start bg-ink p-7 text-white sm:p-9" data-reveal style={{ '--d': '0.1s' } as React.CSSProperties}>
             <h2 className="display-md">Työhön kuuluu</h2>
             <ul className="mt-6 grid gap-3">
               {s.includes.map((x) => (

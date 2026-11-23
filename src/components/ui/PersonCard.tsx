@@ -26,7 +26,7 @@ export function PersonCard({ person, dark = false, location }: { person: Person;
       <div className="mt-auto flex flex-col gap-2 pt-2">
         <a
           href={`tel:${person.phone.e164}`}
-          className="inline-flex min-h-11 items-center gap-3 text-xl font-semibold tabular-nums hover:text-red-hot"
+          className="inline-flex min-h-11 items-center gap-3 text-xl font-semibold tabular-nums hover:text-red"
           onClick={() => track('phone_click', { location, person: person.id })}
         >
           <Phone className="size-5 text-red" aria-hidden="true" />

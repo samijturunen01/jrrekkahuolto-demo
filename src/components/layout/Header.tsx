@@ -19,8 +19,12 @@ export function Header() {
   const panelRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  // Close the menu on navigation
-  useEffect(() => setOpen(false), [location.key])
+  // Close the menu on navigation (state adjusted during render – no effect needed)
+  const [navKey, setNavKey] = useState(location.key)
+  if (navKey !== location.key) {
+    setNavKey(location.key)
+    if (open) setOpen(false)
+  }
 
   // Dialog behaviour: Escape closes, focus stays inside, background scroll locked
   useEffect(() => {
@@ -114,10 +118,10 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div className="lg:hidden">
+      {/* Mobile menu – clipped by a fixed, overflow-hidden layer so the closed panel never widens the page */}
+      <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden lg:hidden" style={{ visibility: open ? 'visible' : undefined }}>
         <div
-          className="menu-scrim fixed inset-0 z-40 bg-ink/60"
+          className="menu-scrim absolute inset-0 bg-ink/60"
           data-open={open}
           aria-hidden="true"
           onClick={() => setOpen(false)}
@@ -129,7 +133,7 @@ export function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Valikko"
-          className="menu-panel on-dark fixed inset-y-0 right-0 z-50 flex w-[min(24rem,100%)] flex-col overflow-y-auto bg-carbon text-white"
+          className="menu-panel on-dark pointer-events-auto absolute inset-y-0 right-0 flex w-[min(24rem,100%)] flex-col overflow-y-auto bg-carbon text-white"
           data-open={open}
           inert={!open}
         >
@@ -163,7 +167,7 @@ export function Header() {
                   >
                     {({ isActive }) => (
                       <>
-                        <span className={`label w-6 text-sm ${isActive ? 'text-red-hot' : 'text-zinc'}`} aria-hidden="true">
+                        <span className={`label w-6 text-sm ${isActive ? 'text-red-soft' : 'text-zinc'}`} aria-hidden="true">
                           0{i + 1}
                         </span>
                         {item.label}

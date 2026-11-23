@@ -89,7 +89,7 @@ export function Services() {
       <section className="bg-fog py-16 sm:py-20 lg:py-24" aria-labelledby="palvelut-ukk">
         <div className="wrap grid gap-10 lg:grid-cols-[0.8fr_1.6fr] lg:gap-16">
           <div>
-            <LaneTag no="?" className="text-steel">
+            <LaneTag no="06" className="text-steel">
               Kysyttyä
             </LaneTag>
             <h2 id="palvelut-ukk" className="display-lg mt-6">

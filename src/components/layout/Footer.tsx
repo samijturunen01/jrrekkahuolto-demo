@@ -26,7 +26,7 @@ export function Footer() {
             <li>
               <a
                 href={`tel:${company.phone.e164}`}
-                className="inline-flex min-h-11 items-center gap-3 text-lg font-semibold text-white tabular-nums hover:text-red-hot"
+                className="inline-flex min-h-11 items-center gap-3 text-lg font-semibold text-white tabular-nums hover:text-red-soft"
                 onClick={() => track('phone_click', { location: 'footer' })}
               >
                 <Phone className="size-5 text-red-hot" aria-hidden="true" />
@@ -66,15 +66,15 @@ export function Footer() {
         <div>
           <h2 className="label text-white">Korjaamo auki</h2>
           <dl className="mt-5 grid gap-2">
-            <div className="flex justify-between gap-6 border-b border-white/10 pb-2">
+            <div className="flex justify-between gap-4 border-b border-white/10 pb-2">
               <dt>Maanantai–perjantai</dt>
-              <dd className="font-semibold text-white tabular-nums">
+              <dd className="whitespace-nowrap font-semibold text-white tabular-nums">
                 {company.hours.weekdays.open}–{company.hours.weekdays.close}
               </dd>
             </div>
-            <div className="flex justify-between gap-6 border-b border-white/10 pb-2">
+            <div className="flex justify-between gap-4 border-b border-white/10 pb-2">
               <dt>Lauantai</dt>
-              <dd className="font-semibold text-white tabular-nums">
+              <dd className="whitespace-nowrap font-semibold text-white tabular-nums">
                 {company.hours.saturday.open}–{company.hours.saturday.close}
               </dd>
             </div>

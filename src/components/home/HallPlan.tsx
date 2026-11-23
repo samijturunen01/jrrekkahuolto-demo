@@ -127,7 +127,7 @@ export function HallPlan() {
             <line x1={X0} x2={X0 + len(30)} y1="62" y2="62" stroke="#a2a8ae" strokeWidth="1.5" />
             <line x1={X0} x2={X0} y1="54" y2="70" stroke="#a2a8ae" strokeWidth="1.5" />
             <line x1={X0 + len(30)} x2={X0 + len(30)} y1="54" y2="70" stroke="#a2a8ae" strokeWidth="1.5" />
-            <rect x={X0 + len(15) - 34} y="52" width="68" height="20" fill="#26292c" />
+            <rect className="hp-dimrect" x={X0 + len(15) - 34} y="52" width="68" height="20" fill="#26292c" />
             <text x={X0 + len(15)} y="67" textAnchor="middle" fill="#d8dadc" fontSize="15">
               30 M
             </text>
@@ -161,7 +161,7 @@ export function HallPlan() {
               }`}
             >
               {lane.label}
-              <span className="block text-sm opacity-80">{lane.length} m</span>
+              <span className="block text-sm">{lane.length} m</span>
             </button>
           ))}
         </div>

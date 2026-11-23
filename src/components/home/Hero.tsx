@@ -21,13 +21,14 @@ export function Hero() {
           </p>
           <h1
             id="hero-title"
-            className="mt-5 font-[family-name:var(--font-display)] text-[clamp(2.65rem,6.6vw,5.6rem)] font-[850] uppercase leading-[0.88]"
+            className="mt-5 font-[family-name:var(--font-display)] text-[clamp(2.65rem,5.3vw,4.85rem)] font-[850] uppercase leading-[0.88]"
           >
             Raskaan kaluston huolto ja korjaus <span className="text-red-hot">Joensuussa</span>
           </h1>
           <p className="lead mt-6 max-w-xl text-mist">
             Kuorma-autot, perävaunut, kylmäkoneet ja perälaudat korjataan samassa hallissa Rahtikadulla. Korjaamo on auki
-            arkisin 7–20 ja lauantaisin 7–15 – jotta huolto mahtuu ajojen väliin.
+            arkisin <span className="whitespace-nowrap">7–20</span> ja lauantaisin <span className="whitespace-nowrap">7–15</span> – jotta huolto mahtuu
+            ajojen väliin.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <RequestCta location="hero" />
@@ -51,7 +52,7 @@ export function Hero() {
               <dt className="order-2 text-sm leading-snug text-zinc">{f.label}</dt>
               <dd className="order-1 flex items-baseline gap-1.5 font-[family-name:var(--font-display)] text-[clamp(1.9rem,3.4vw,2.75rem)] font-extrabold leading-none">
                 <span className="tabular-nums">{f.value}</span>
-                <span className="label text-sm text-red-hot">{f.unit}</span>
+                <span className="label text-sm text-red-soft">{f.unit}</span>
               </dd>
             </div>
           ))}

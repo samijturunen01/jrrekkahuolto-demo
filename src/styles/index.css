@@ -27,6 +27,8 @@
   --color-red: #c8121a;
   --color-red-dark: #970d13;
   --color-red-hot: #e8343a;
+  /* small red text on dark surfaces (≥ 4.5:1 on graphite) */
+  --color-red-soft: #ff5c61;
   --color-signal: #f2c230;
 
   --font-display: 'Big Shoulders Display Variable', 'Arial Narrow', 'Roboto Condensed', sans-serif;
@@ -560,13 +562,14 @@
   opacity: 1;
   transform: none;
 }
-/* Photo reveal: a roll-up door wipe */
-.js [data-wipe] {
+/* Photo reveal: a roll-up door wipe. The clip sits on the child – an element whose own
+   clip-path hides it completely is never reported as intersecting. */
+.js [data-wipe] > * {
   clip-path: inset(0 0 100% 0);
   transition: clip-path 1s var(--ease-door);
   transition-delay: var(--d, 0s);
 }
-.js [data-wipe].is-in {
+.js [data-wipe].is-in > * {
   clip-path: inset(0 0 0 0);
 }
 
@@ -767,10 +770,17 @@
 /* ---------- Mobile menu ---------- */
 .menu-panel {
   transform: translateX(100%);
-  transition: transform 0.4s var(--ease-door);
+  visibility: hidden;
+  transition:
+    transform 0.4s var(--ease-door),
+    visibility 0s linear 0.4s;
 }
 .menu-panel[data-open='true'] {
   transform: none;
+  visibility: visible;
+  transition:
+    transform 0.4s var(--ease-door),
+    visibility 0s;
 }
 .menu-scrim {
   opacity: 0;
@@ -792,9 +802,18 @@
     scroll-behavior: auto !important;
   }
   .js [data-reveal],
-  .js [data-wipe] {
+  .js [data-wipe] > * {
     opacity: 1;
     transform: none;
     clip-path: none;
+  }
+}
+
+/* Hall plan on narrow screens: in-drawing labels would be ~6 px tall – the lane buttons
+   beside the drawing carry the same information, so the drawing stays purely visual. */
+@media (max-width: 639px) {
+  .hallplan svg text,
+  .hallplan svg .hp-dimrect {
+    display: none;
   }
 }
