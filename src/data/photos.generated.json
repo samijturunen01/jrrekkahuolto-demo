@@ -1,0 +1,70 @@
+{
+  "halli-yleiskuva": {
+    "width": 900,
+    "height": 599,
+    "widths": [
+      600,
+      900
+    ]
+  },
+  "ohjaamo-kippi": {
+    "width": 900,
+    "height": 599,
+    "widths": [
+      600,
+      900
+    ]
+  },
+  "huoltomonttu": {
+    "width": 900,
+    "height": 600,
+    "widths": [
+      600,
+      900
+    ]
+  },
+  "kuormatila-korjaus": {
+    "width": 900,
+    "height": 599,
+    "widths": [
+      600,
+      900
+    ]
+  },
+  "stock-moottori": {
+    "width": 1600,
+    "height": 1067,
+    "widths": [
+      800,
+      1280,
+      1600
+    ]
+  },
+  "stock-ohjaamo": {
+    "width": 1600,
+    "height": 1067,
+    "widths": [
+      800,
+      1280,
+      1600
+    ]
+  },
+  "stock-kylmaperavaunut": {
+    "width": 1600,
+    "height": 1067,
+    "widths": [
+      800,
+      1280,
+      1600
+    ]
+  },
+  "stock-tarkastus": {
+    "width": 1600,
+    "height": 2400,
+    "widths": [
+      800,
+      1280,
+      1600
+    ]
+  }
+}
