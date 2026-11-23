@@ -24,7 +24,9 @@ export function PageHero({
 }) {
   return (
     <section className="on-dark corrugated relative overflow-hidden text-white">
-      <div className="wrap relative grid gap-10 pb-14 pt-8 sm:pb-16 lg:grid-cols-[1.25fr_1fr] lg:items-end lg:gap-14 lg:pb-20 lg:pt-10">
+      <div
+        className={`wrap relative grid gap-10 pb-14 pt-8 sm:pb-16 lg:items-end lg:gap-14 lg:pb-20 lg:pt-10 ${aside ? 'lg:grid-cols-[1.25fr_1fr]' : ''}`}
+      >
         <div>
           <nav aria-label="Murupolku" className="mb-8">
             <ol className="flex flex-wrap items-center gap-1.5 text-sm text-zinc">
@@ -45,7 +47,7 @@ export function PageHero({
             </ol>
           </nav>
           <div className="text-zinc">{eyebrow}</div>
-          <h1 className={`mt-5 ${title.length > 34 ? 'display-lg max-w-[20ch]' : 'display-xl max-w-[16ch]'}`}>{title}</h1>
+          <h1 className={`mt-5 ${title.length > 34 ? 'display-lg max-w-[20ch]' : 'display-xl max-w-[18ch]'}`}>{title}</h1>
           {lead && <p className="lead mt-6 max-w-2xl text-mist">{lead}</p>}
           {children}
         </div>
