@@ -41,7 +41,8 @@ Etusivu · Palvelut · 5 service pages (korjaukset-ja-huollot, lammonsaatolaitte
 ## Testing status (local, production build)
 
 - `tsc -b`, `eslint .`, `npm run build` – pass
-- Playwright: see latest run in the final handover (all specs pass locally; 1 mobile-only test skipped on desktop)
+- Playwright (desktop 1440 + Pixel 7): 93 passed, 1 skipped (mobile-only menu test on desktop) – locally, in GitHub Actions and against the live URL (`LIVE_URL=https://samijturunen01.github.io npm test`), 23.11.2026
+- Overflow check at 360 / 390 / 768 / 1024 / 1440 px on every route: none
 - axe-core WCAG 2.2 A/AA: no serious/critical violations after contrast fixes (automated only – manual review: keyboard navigation of menu, gallery, FAQ and form checked in tests; screen-reader testing not done)
 - Lab performance (4× CPU, ~1.6 Mbps, 150 ms RTT – not real-user data): mobile LCP ≈ 2.2–2.9 s, desktop ≈ 1.9–3.0 s, CLS ≤ 0.03
 
@@ -59,6 +60,8 @@ Logo, branding and company photos: authorised by the project owner for this demo
 ## Deployment
 
 GitHub Actions workflow `.github/workflows/deploy.yml` (lint → build → Playwright → Pages). Base path `/jrrekkahuolto-demo/`, `VITE_FORM_MODE=demo`, `VITE_ALLOW_INDEXING=false`.
+
+**Status: deployed and verified 23.11.2026** – all routes 200, unknown URLs → branded 404 (status 404), `noindex, nofollow` on every page, robots.txt + sitemap served. Repo-local git identity: `samijturunen01 <308068629+samijturunen01@users.noreply.github.com>` (no global git identity on this machine).
 
 ## Production readiness (if the customer buys)
 
