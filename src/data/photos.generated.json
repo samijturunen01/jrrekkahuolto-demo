@@ -32,39 +32,35 @@
     ]
   },
   "stock-moottori": {
-    "width": 1600,
-    "height": 1067,
+    "width": 1280,
+    "height": 854,
     "widths": [
       800,
-      1280,
-      1600
+      1280
     ]
   },
   "stock-ohjaamo": {
-    "width": 1600,
-    "height": 1067,
+    "width": 1280,
+    "height": 854,
     "widths": [
       800,
-      1280,
-      1600
+      1280
     ]
   },
   "stock-kylmaperavaunut": {
-    "width": 1600,
-    "height": 1067,
+    "width": 1280,
+    "height": 854,
     "widths": [
       800,
-      1280,
-      1600
+      1280
     ]
   },
   "stock-tarkastus": {
-    "width": 1600,
-    "height": 2400,
+    "width": 1280,
+    "height": 1920,
     "widths": [
       800,
-      1280,
-      1600
+      1280
     ]
   }
 }

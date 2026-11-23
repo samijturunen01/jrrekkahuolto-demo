@@ -27,10 +27,10 @@ const photos = {
   'huoltomonttu': { file: 'site/kuvat/yritys/yritys_xlg.jpg', widths: [600, 900] },
   'kuormatila-korjaus': { file: 'site/kuvat/etusivu/karuselli_6_xlg.jpg', widths: [600, 900] },
   // Illustrative stock – Pexels licence (not JR Rekkahuolto's premises, staff or work)
-  'stock-moottori': { file: 'stock/p7564861.jpg', widths: [800, 1280, 1600] },
-  'stock-ohjaamo': { file: 'stock/p6720542.jpg', widths: [800, 1280, 1600] },
-  'stock-kylmaperavaunut': { file: 'stock/p27099094.jpg', widths: [800, 1280, 1600] },
-  'stock-tarkastus': { file: 'stock/p7541346.jpg', widths: [800, 1280, 1600] },
+  'stock-moottori': { file: 'stock/p7564861.jpg', widths: [800, 1280] },
+  'stock-ohjaamo': { file: 'stock/p6720542.jpg', widths: [800, 1280] },
+  'stock-kylmaperavaunut': { file: 'stock/p27099094.jpg', widths: [800, 1280] },
+  'stock-tarkastus': { file: 'stock/p7541346.jpg', widths: [800, 1280] },
 }
 
 await fs.mkdir(OUT, { recursive: true })

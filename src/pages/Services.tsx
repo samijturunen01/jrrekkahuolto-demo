@@ -32,9 +32,11 @@ export function Services() {
             const flip = i % 2 === 1
             return (
               <article key={s.id} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16" aria-labelledby={`svc-${s.id}`}>
-                <div className={`relative ${flip ? 'lg:order-2' : ''}`} data-wipe>
+                {/* The first photo is above the fold on phones: load it eagerly, no reveal. */}
+                <div className={`relative ${flip ? 'lg:order-2' : ''}`} data-wipe={i === 0 ? undefined : ''}>
                   <Photo
                     name={s.photo}
+                    priority={i === 0}
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="relative block aspect-[4/3] overflow-hidden"
                     imgClassName="h-full w-full object-cover"
@@ -46,7 +48,7 @@ export function Services() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>
-                <div data-reveal>
+                <div data-reveal={i === 0 ? undefined : ''}>
                   <p className="label text-red">{s.eyebrow}</p>
                   <h2 id={`svc-${s.id}`} className="display-md mt-3">
                     {s.label}

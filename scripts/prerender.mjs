@@ -71,7 +71,9 @@ try {
   }
 
   const assets = await fs.readdir('dist/assets')
-  const fontPreloads = [/^big-shoulders-display-latin-wght-normal-.*\.woff2$/, /^barlow-latin-400-normal-.*\.woff2$/]
+  // Only the display face is preloaded (the H1 is the LCP element); body text swaps in
+  // without competing for bandwidth with the CSS.
+  const fontPreloads = [/^big-shoulders-display-latin-wght-normal-.*\.woff2$/]
     .map((re) => assets.find((f) => re.test(f)))
     .filter(Boolean)
     .map((f) => `<link rel="preload" href="${base}assets/${f}" as="font" type="font/woff2" crossorigin />`)
